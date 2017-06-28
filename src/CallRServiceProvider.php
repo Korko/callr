@@ -32,22 +32,10 @@ class CallRServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerCallR();
-    }
-
-    /**
-     * Register CallR
-     *
-     * @return void
-     */
-    protected function registerCallR()
-    {
-        $this->app->singleton('callr', function ($app) {
+        $this->app->singleton(CallRClient::class, function ($app) {
             return new CallRClient($app['config']['callr.username'], $app['config']['callr.password'], $app['config']['callr.alias'], $app['config']['callr.sender']);
         });
 
-        $this->app->bind('Korko\CallR', function ($app) {
-            return $app['callr'];
-        });
+        $this->commands(CallRSmsCommand::class);
     }
 }
