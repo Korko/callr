@@ -1,0 +1,26 @@
+{
+    "name": "korko/callr",
+    "description": "A simple library for working with CallR in Laravel.",
+    "keywords": [
+        "laravel",
+        "callr"
+    ],
+    "homepage": "https://github.com/korko/callr",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jérémy Lemesle",
+            "email": "jeremy.lemesle@korko.fr",
+            "homepage": "http://korko.fr",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "callr/sdk-php": "^0.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Korko\\CallR\\": "src/"
+        }
+    }
+}
