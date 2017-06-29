@@ -9,11 +9,11 @@ use Symfony\Component\Console\Input\InputOption;
 class CallRSmsCommand extends Command
 {
     /**
-     * The console command name.
+     * The name and signature of the console command.
      *
      * @var string
      */
-    protected $name = 'callr:sms';
+    protected $signature = 'callr:sms {phone} {text=This is a test message sent from the artisan console}';
 
     /**
      * The console command description.
@@ -46,40 +46,11 @@ class CallRSmsCommand extends Command
         $this->line('Sending SMS via CallR to: '.$this->argument('phone'));
 
         // Grab the text option if specified
-        $text = $this->option('text');
-
-        // If we havent specified a message, setup a default one
-        if (is_null($text)) {
-            $text = 'This is a test message sent from the artisan console';
-        }
+        $text = $this->argument('text');
 
         $this->line($text);
 
         $this->callr->message($this->argument('phone'), $text);
-    }
-
-    /**
-     * Get the console command arguments.
-     *
-     * @return array
-     */
-    protected function getArguments()
-    {
-        return [
-            ['phone', InputArgument::REQUIRED, 'The phone number that will receive a test message.'],
-        ];
-    }
-
-    /**
-     * Get the console command options.
-     *
-     * @return array
-     */
-    protected function getOptions()
-    {
-        return [
-            ['text', null, InputOption::VALUE_OPTIONAL, 'Optional message that will be sent.', null],
-        ];
     }
 }
 

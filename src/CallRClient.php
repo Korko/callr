@@ -21,7 +21,7 @@ class CallRClient
 
         $auth = new CallRAuth($username, $password);
         if (!empty($alias)) {
-            $auth->loginAs('User', $alias);
+            $auth = $auth->logAs('User', $alias);
         }
 
         $this->api->setAuth($auth);
