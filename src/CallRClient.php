@@ -12,6 +12,9 @@ use CALLR\API\Authentication\LoginPasswordAuth as CallRAuth;
  */
 class CallRClient
 {
+    const ALERTING = 'ALERTING';
+    const MARKETING = 'MARKETING';
+
     protected $api;
     protected $sender;
 
@@ -34,9 +37,12 @@ class CallRClient
         return $this->api;
     }
 
-    public function message($to, $text)
+    public function message($to, $text, $mode = CallRClient::ALERTING)
     {
-        return $this->api->call('sms.send', [$this->sender, $to, $text, null]);
+        $options = new \stdClass;
+        $options->nature = $mode;
+
+        return $this->api->call('sms.send', [$this->sender, $to, $text, $options]);
     }
 }
 
