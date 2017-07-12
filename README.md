@@ -26,6 +26,7 @@ In the `config/app.php` file, add the provider:
 #### Alias
 
 If you want to use an alias to test and remove the link between this specific package and your code, you can add in `config/app.php` an alias like this:
+
     'Sms'          => Facades\Korko\Callr\CallrClient::class,
 
 I prefer to use facade as alias for tests purposes but you should be able to use directly `Korko\Callr\CallrClient::class` as it's already a singleton.
@@ -54,6 +55,7 @@ To test my implementation, I can use the command `php artisan callr:sms <number 
 ### Client call
 
 In my code, I just have to call the client (I use the alias added before):
+
     Sms::message(<number in "+prefix number" format>, <message>, <mode=CallrClient::ALERTING>);
 
 The mode can also take the value `CallrClient::MARKETING`. Those constants are just an alias for the values "ALERTING" and "MARKETING" used in the API.
