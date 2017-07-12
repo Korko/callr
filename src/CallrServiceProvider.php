@@ -32,6 +32,10 @@ class CallrServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/callr.php', 'callr'
+        );
+
         $this->app->singleton(CallrClient::class, function ($app) {
             return new CallrClient($app['config']['callr.username'], $app['config']['callr.password'], $app['config']['callr.alias'], $app['config']['callr.sender']);
         });
