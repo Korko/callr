@@ -1,16 +1,16 @@
 <?php
 
-namespace Korko\CallR;
+namespace Korko\Callr;
 
-use CALLR\API\Client as CallR;
-use CALLR\API\Authentication\LoginPasswordAuth as CallRAuth;
+use CALLR\API\Client as Callr;
+use CALLR\API\Authentication\LoginPasswordAuth as CallrAuth;
 
 /**
- * CallR Client for Laravel
+ * Callr Client for Laravel
  *
  * @author Jeremy Lemesle <jeremy.lemesle@korko.fr>
  */
-class CallRClient
+class CallrClient
 {
     const ALERTING = 'ALERTING';
     const MARKETING = 'MARKETING';
@@ -20,9 +20,9 @@ class CallRClient
 
     public function __construct($username, $password, $alias = '', $sender = '')
     {
-        $this->api = new CallR();
+        $this->api = new Callr();
 
-        $auth = new CallRAuth($username, $password);
+        $auth = new CallrAuth($username, $password);
         if (!empty($alias)) {
             $auth = $auth->logAs('User', $alias);
         }
@@ -37,7 +37,7 @@ class CallRClient
         return $this->api;
     }
 
-    public function message($to, $text, $mode = CallRClient::ALERTING)
+    public function message($to, $text, $mode = CallrClient::ALERTING)
     {
         $options = new \stdClass;
         $options->nature = $mode;

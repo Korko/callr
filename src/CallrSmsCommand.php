@@ -1,12 +1,12 @@
 <?php
-namespace Korko\CallR;
+namespace Korko\Callr;
 
-use Korko\CallR\CallRClient;
+use Korko\Callr\CallrClient;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class CallRSmsCommand extends Command
+class CallrSmsCommand extends Command
 {
     /**
      * The name and signature of the console command.
@@ -20,19 +20,19 @@ class CallRSmsCommand extends Command
      *
      * @var string
      */
-    protected $description = 'CallR command to test CallR API Integration.';
+    protected $description = 'Callr command to test Callr API Integration.';
 
     /**
-     * @var \Korko\CallR\CallRInterface
+     * @var \Korko\Callr\CallrInterface
      */
     protected $callr;
 
     /**
      * Create a new command instance.
      *
-     * @param \Korko\CallR\CallRClient $callr
+     * @param \Korko\Callr\CallrClient $callr
      */
-    public function __construct(CallRClient $callr)
+    public function __construct(CallrClient $callr)
     {
         parent::__construct();
         $this->callr = $callr;
@@ -43,7 +43,7 @@ class CallRSmsCommand extends Command
      */
     public function fire()
     {
-        $this->line('Sending SMS via CallR to: '.$this->argument('phone'));
+        $this->line('Sending SMS via Callr to: '.$this->argument('phone'));
 
         // Grab the text option if specified
         $text = $this->argument('text');

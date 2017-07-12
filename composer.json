@@ -1,6 +1,6 @@
 {
     "name": "korko/callr",
-    "description": "A simple library for working with CallR in Laravel.",
+    "description": "A simple library for working with Callr in Laravel.",
     "keywords": [
         "laravel",
         "callr"
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Korko\\CallR\\": "src/"
+            "Korko\\Callr\\": "src/"
         }
     }
 }

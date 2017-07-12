@@ -1,15 +1,15 @@
 <?php
 
-namespace Korko\CallR;
+namespace Korko\Callr;
 
 use Illuminate\Support\ServiceProvider;
 
 /**
- * CallR Service provider for Laravel
+ * Callr Service provider for Laravel
  *
  * @author Jeremy Lemesle <jeremy.lemesle@korko.fr>
  */
-class CallRServiceProvider extends ServiceProvider
+class CallrServiceProvider extends ServiceProvider
 {
 
     /**
@@ -32,10 +32,10 @@ class CallRServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton(CallRClient::class, function ($app) {
-            return new CallRClient($app['config']['callr.username'], $app['config']['callr.password'], $app['config']['callr.alias'], $app['config']['callr.sender']);
+        $this->app->singleton(CallrClient::class, function ($app) {
+            return new CallrClient($app['config']['callr.username'], $app['config']['callr.password'], $app['config']['callr.alias'], $app['config']['callr.sender']);
         });
 
-        $this->commands(CallRSmsCommand::class);
+        $this->commands(CallrSmsCommand::class);
     }
 }
