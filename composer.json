@@ -22,5 +22,12 @@
         "psr-4": {
             "Korko\\Callr\\": "src/"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Korko\\Callr\\CallrServiceProvider"
+            ]
+        }
     }
 }
