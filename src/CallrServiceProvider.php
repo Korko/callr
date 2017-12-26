@@ -40,6 +40,6 @@ class CallrServiceProvider extends ServiceProvider
             return new CallrClient($app['config']['callr.username'], $app['config']['callr.password'], $app['config']['callr.alias'], $app['config']['callr.sender']);
         });
 
-        $this->commands(CallrSmsCommand::class);
+        $this->commands([CallrSmsCommand::class, CallrSubscribeCommand::class, CallrUnsubscribeCommand::class, CallrWebhooksListCommand::class]);
     }
 }
